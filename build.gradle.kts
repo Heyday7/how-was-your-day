@@ -24,6 +24,12 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	runtimeOnly("com.mysql:mysql-connector-j")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	// for OAuth2
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+
+	// for mustache
+	implementation("org.springframework.boot:spring-boot-starter-mustache")
 }
 
 tasks.withType<KotlinCompile> {
