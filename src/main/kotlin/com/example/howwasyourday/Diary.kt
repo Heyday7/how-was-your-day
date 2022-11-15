@@ -15,3 +15,16 @@ data class Diary(
     @Id @GeneratedValue
     val id: Long = 0
 }
+
+@Entity
+data class Action(
+    val type: ActionType = ActionType.Any,
+    val comment: String,
+) {
+    @Id @GeneratedValue
+    val id: Long = 0
+}
+
+enum class ActionType {
+    Work, Study, Exercise, Hobby, Any
+}
