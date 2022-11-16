@@ -1,16 +1,15 @@
 package com.example.howwasyourday
 
-import javax.persistence.CascadeType
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.OneToMany
+import javax.persistence.*
 
 @Entity
 data class Diary(
     @OneToMany(cascade = [CascadeType.PERSIST])
     val actions: List<Action> = emptyList(),
+    val title: String = "",
     val body: String = "",
+    @ManyToOne(fetch = FetchType.LAZY)
+    val user: User
 ) {
     @Id @GeneratedValue
     val id: Long = 0

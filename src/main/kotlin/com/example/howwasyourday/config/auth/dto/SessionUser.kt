@@ -9,4 +9,5 @@ data class SessionUser(
     val name = user.name
     val email = user.email
     val picture = user.picture
+    val id = user.id
 }

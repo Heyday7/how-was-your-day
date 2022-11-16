@@ -1,13 +1,9 @@
 package com.example.howwasyourday
 
 import org.hibernate.annotations.CreationTimestamp
+import org.springframework.security.core.userdetails.UserDetails
 import java.time.LocalDateTime
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.EnumType
-import javax.persistence.Enumerated
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 data class User(
@@ -15,6 +11,9 @@ data class User(
     val email: String,
     val name: String,
     val picture: String,
+
+    @OneToMany(cascade = [CascadeType.PERSIST], fetch = FetchType.LAZY)
+    val diaries: List<Diary> = emptyList(),
 
     @Enumerated(EnumType.STRING)
     val role: Role,

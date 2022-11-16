@@ -21,4 +21,7 @@ class DiaryServiceImpl(
     override fun post(diary: Diary) {
         diaryRepository.save(diary)
     }
+
+    override fun getByUserId(userId: Long): List<Diary> =
+        diaryRepository.findByUserId(userId)
 }
