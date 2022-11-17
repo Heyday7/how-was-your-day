@@ -11,8 +11,8 @@ data class User(
     val name: String,
     val picture: String,
 
-    @OneToMany
-        (cascade = [CascadeType.PERSIST],
+    @OneToMany(
+        cascade = [CascadeType.PERSIST],
         fetch = FetchType.LAZY,
         mappedBy = "user"
     )

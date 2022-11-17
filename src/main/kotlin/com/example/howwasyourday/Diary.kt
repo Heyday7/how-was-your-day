@@ -8,6 +8,7 @@ data class Diary(
     val actions: List<Action> = emptyList(),
     val title: String = "",
     val body: String = "",
+    val isPrivate: Boolean = false,
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     val user: User

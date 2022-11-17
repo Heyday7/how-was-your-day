@@ -32,6 +32,7 @@ class DiaryServiceImpl(
             diaryDTO.actions,
             diaryDTO.title,
             diaryDTO.body,
+            diaryDTO.isPrivate,
             user
         )
         diaryRepository.save(diary)

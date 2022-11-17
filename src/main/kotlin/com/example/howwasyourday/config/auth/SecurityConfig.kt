@@ -53,7 +53,9 @@ class SecurityConfig(
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService)
-            .and().and()
+            .and()
+            .defaultSuccessUrl("/")
+            .and()
             .build()
     }
 }

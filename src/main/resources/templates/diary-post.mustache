@@ -11,19 +11,13 @@
                 <label for="body">내용</label>
                 <input type="text" class="form-control" id="body" placeholder="내용을 입력하세요">
             </div>
+            <div class="form-group">
+                <label for="private">비공개여부</label>
+                <input type="checkbox" class="form-control" id="is-private" name="isPrivate" value="true">
+            </div>
             <div class="form-group" id="action-list">
                 <label for="actions">Actions</label>
                 <button type="button" id="btn-action-add">Action 추가</button>
-                <p>
-                <input name="comment[]" type="text">
-                <select name="type[]">
-                    <option value="Work">Work</option>
-                    <option value="Study">Study</option>
-                    <option value="Exercise">Exercise</option>
-                    <option value="Hobby">Hobby</option>
-                    <option value="Any">Any</option>
-                </select>
-                </p>
             </div>
         </form>
         <a href="/" role="button" class="btn btn-secondary">글 취소</a>

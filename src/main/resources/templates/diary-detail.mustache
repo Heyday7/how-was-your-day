@@ -1,0 +1,22 @@
+{{>header}}
+{{#diary}}
+    <div class="col">
+        <p>
+        <h4>제목: {{title}}</h4>
+        <h4>내용: {{body}}</h4>
+        {{#actions}}
+            Action
+            <h5>내용: {{comment}}</h5>
+            <h5>타입: {{type}}</h5>
+        {{/actions}}
+        </p>
+    </div>
+{{/diary}}
+{{^diary}}
+    Diary 로드에 실패했습니다.
+{{/diary}}
+
+
+
+
+{{>footer}}

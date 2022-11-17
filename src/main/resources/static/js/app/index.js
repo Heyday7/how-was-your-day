@@ -40,7 +40,8 @@ var main = {
         var data = {
             title: $('#title').val(),
             body: $('#body').val(),
-            actions: actions
+            actions: actions,
+            isPrivate: $('#is-private').is(":checked")
         };
 
         $.ajax({

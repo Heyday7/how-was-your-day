@@ -6,6 +6,7 @@ import com.example.howwasyourday.service.UserService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import javax.servlet.http.HttpSession
 
 @Controller
@@ -26,8 +27,24 @@ class HtmlController(
         return "home"
     }
 
-    @GetMapping("/diary")
+    @GetMapping("/diary-post")
     fun diaryPost(model: Model): String {
         return "diary-post"
+    }
+
+    @GetMapping("/diary/{id}")
+    fun diaryDetail(@PathVariable id: Long, model: Model): String {
+        val diary = diaryService.get(id)
+        model.addAttribute("diary", diary)
+
+        return "diary-detail"
+    }
+
+    @GetMapping("/list")
+    fun diaryList(model: Model): String {
+        val diaries = diaryService.getAll()
+        model.addAttribute("diaries", diaries)
+
+        return "diary-list"
     }
 }
