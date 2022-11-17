@@ -1,7 +1,6 @@
 package com.example.howwasyourday
 
 import org.hibernate.annotations.CreationTimestamp
-import org.springframework.security.core.userdetails.UserDetails
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -12,7 +11,11 @@ data class User(
     val name: String,
     val picture: String,
 
-    @OneToMany(cascade = [CascadeType.PERSIST], fetch = FetchType.LAZY)
+    @OneToMany
+        (cascade = [CascadeType.PERSIST],
+        fetch = FetchType.LAZY,
+        mappedBy = "user"
+    )
     val diaries: List<Diary> = emptyList(),
 
     @Enumerated(EnumType.STRING)

@@ -30,7 +30,7 @@ class DiaryController(
     }
 
     @PostMapping("/diaries")
-    fun newDiary(@RequestBody newDiary: Diary): ResponseEntity<Any> {
+    fun newDiary(@RequestBody newDiary: DiaryDTO): ResponseEntity<Any> {
         diaryService.post(newDiary)
         return ResponseEntity
                 .ok()

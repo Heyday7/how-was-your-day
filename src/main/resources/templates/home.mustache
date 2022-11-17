@@ -1,6 +1,4 @@
-<html>
-<head></head>
-<body>
+{{>header}}
     <div>
         <h1>{{hi}}</h1>
     </div>
@@ -17,16 +15,20 @@
                        role="button">Google Login</a>
                 {{/user}}
 
-
+            </div>
+            <div class="col-md-6">
+                {{#user.diaries}}
+                    <div class="col">
+                        <h6>{{title}}</h6>
+                        <h6>{{body}}</h6>
+                    </div>
+                {{/user.diaries}}
             </div>
             <div>
-                {{#diaries}}
-                    <b>{{body}}</b>
-                {{/diaries}}
+                <a href="/diary" class="btn btn-info active" role="button">Diary 작성하기</a>
             </div>
         </div>
         <br>
         <!-- 목록 출력 영역 -->
     </div>
-</body>
-</html>
+{{>footer}}

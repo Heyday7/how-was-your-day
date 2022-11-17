@@ -9,6 +9,7 @@ data class Diary(
     val title: String = "",
     val body: String = "",
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     val user: User
 ) {
     @Id @GeneratedValue
