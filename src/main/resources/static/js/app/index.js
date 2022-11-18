@@ -7,8 +7,8 @@ var main = {
         });
 
         $('#btn-action-add').on('click', function() {
-            var html = `<p><input name="action[][comment]" type="text">
-                        <select name="action[][type]">
+            var html = `<p><input name="comment[]" type="text">
+                        <select name="type[]">
                             <option value="Work">Work</option>
                             <option value="Study">Study</option>
                             <option value="Exercise">Exercise</option>
