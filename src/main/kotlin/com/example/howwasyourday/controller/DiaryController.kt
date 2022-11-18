@@ -3,17 +3,14 @@ package com.example.howwasyourday.controller
 import com.example.howwasyourday.Diary
 import com.example.howwasyourday.service.DiaryService
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import java.security.Principal
 
 @RestController
 @RequestMapping("/api")
 class DiaryController(
-        val diaryService: DiaryService
+        val diaryService: DiaryService,
+        val controllerUtils: ControllerUtils
 ) {
     @GetMapping("/diaries")
     fun all(): ResponseEntity<List<Diary>> {
@@ -30,8 +27,16 @@ class DiaryController(
     }
 
     @PostMapping("/diaries")
-    fun newDiary(@RequestBody newDiary: DiaryDTO): ResponseEntity<Any> {
-        diaryService.post(newDiary)
+    fun newDiary(@RequestBody newDiary: DiaryDTO, principal: Principal): ResponseEntity<Any> {
+        val user = controllerUtils.getUserFromPrincipal(principal)
+        val diary = Diary(
+                newDiary.actions,
+                newDiary.title,
+                newDiary.body,
+                newDiary.isPrivate,
+                user
+        )
+        diaryService.post(diary)
         return ResponseEntity
                 .ok()
                 .body(true)
