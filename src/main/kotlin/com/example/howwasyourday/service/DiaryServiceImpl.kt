@@ -1,6 +1,6 @@
 package com.example.howwasyourday.service
 
-import com.example.howwasyourday.Diary
+import com.example.howwasyourday.entity.Diary
 import com.example.howwasyourday.repository.DiaryRepository
 import com.example.howwasyourday.repository.UserRepository
 import org.springframework.data.repository.findByIdOrNull
@@ -24,6 +24,6 @@ class DiaryServiceImpl(
         diaryRepository.save(diary)
     }
 
-    override fun getByUserId(userId: Long): List<Diary> =
-        diaryRepository.findByUserId(userId)
+    override fun getByWriterId(userId: Long): List<Diary> =
+        diaryRepository.findByWriterId(userId)
 }
