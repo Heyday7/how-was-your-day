@@ -1,6 +1,6 @@
 package com.example.howwasyourday.config.auth
 
-import com.example.howwasyourday.Role
+import com.example.howwasyourday.entity.Role
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.security.config.annotation.web.builders.HttpSecurity

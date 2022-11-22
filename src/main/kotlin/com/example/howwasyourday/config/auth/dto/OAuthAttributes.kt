@@ -1,7 +1,7 @@
 package com.example.howwasyourday.config.auth.dto
 
-import com.example.howwasyourday.Role
-import com.example.howwasyourday.User
+import com.example.howwasyourday.entity.Role
+import com.example.howwasyourday.entity.User
 
 data class OAuthAttributes(
     val attributes: Map<String, Any>,
