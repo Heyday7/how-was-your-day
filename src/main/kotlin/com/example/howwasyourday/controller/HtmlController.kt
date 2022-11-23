@@ -19,7 +19,7 @@ class HtmlController(
     fun home(model: Model): String {
         model.addAttribute("hi", "hi")
         val sessionUser = httpSession.getAttribute("user") as SessionUser?
-        if (sessionUser != null) {
+        if (sessionUser?.id != null) {
             val user = userService.getById(sessionUser.id)
             model.addAttribute("user", user)
         }

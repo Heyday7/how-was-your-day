@@ -1,6 +1,10 @@
 package com.example.howwasyourday.controller
 
-import com.example.howwasyourday.Diary
+import com.example.howwasyourday.controller.request.RequestDiaryDTO
+import com.example.howwasyourday.controller.response.ResponseDiaryDTO
+import com.example.howwasyourday.controller.response.toDiary
+import com.example.howwasyourday.controller.response.toResponseDiaryDTO
+import com.example.howwasyourday.entity.Diary
 import com.example.howwasyourday.service.DiaryService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -13,29 +17,23 @@ class DiaryController(
         val controllerUtils: ControllerUtils
 ) {
     @GetMapping("/diaries")
-    fun all(): ResponseEntity<List<Diary>> {
+    fun all(): ResponseEntity<List<ResponseDiaryDTO>> {
         return ResponseEntity
                 .ok()
-                .body(diaryService.getAll())
+                .body(diaryService.getAll().map { it.toResponseDiaryDTO() })
     }
 
     @GetMapping("/diaries/{id}")
-    fun one(@PathVariable id: Long): ResponseEntity<Diary> {
+    fun one(@PathVariable id: Long): ResponseEntity<ResponseDiaryDTO> {
         return ResponseEntity
                 .ok()
-                .body(diaryService.get(id))
+                .body(diaryService.get(id).toResponseDiaryDTO())
     }
 
     @PostMapping("/diaries")
-    fun newDiary(@RequestBody newDiary: DiaryDTO, principal: Principal): ResponseEntity<Any> {
+    fun newDiary(@RequestBody newDiary: RequestDiaryDTO, principal: Principal): ResponseEntity<Any> {
         val user = controllerUtils.getUserFromPrincipal(principal)
-        val diary = Diary(
-                newDiary.actions,
-                newDiary.title,
-                newDiary.body,
-                newDiary.isPrivate,
-                user
-        )
+        val diary = newDiary.toDiary(user)
         diaryService.post(diary)
         return ResponseEntity
                 .ok()

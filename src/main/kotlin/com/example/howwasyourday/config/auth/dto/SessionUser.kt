@@ -1,6 +1,6 @@
 package com.example.howwasyourday.config.auth.dto
 
-import com.example.howwasyourday.User
+import com.example.howwasyourday.entity.User
 import java.io.Serializable
 
 data class SessionUser(

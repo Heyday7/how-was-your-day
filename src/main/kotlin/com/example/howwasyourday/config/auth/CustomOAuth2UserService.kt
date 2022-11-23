@@ -1,6 +1,6 @@
 package com.example.howwasyourday.config.auth
 
-import com.example.howwasyourday.User
+import com.example.howwasyourday.entity.User
 import com.example.howwasyourday.config.auth.dto.OAuthAttributes
 import com.example.howwasyourday.config.auth.dto.SessionUser
 import com.example.howwasyourday.config.auth.dto.toEntity
@@ -46,9 +46,10 @@ class CustomOAuth2UserService(
     }
 
     fun saveOrUpdate(attributes: OAuthAttributes): User {
-        val user = userRepository.findByEmail(attributes.email)
-            ?.copy(name = attributes.name, picture = attributes.picture)
-            ?: attributes.toEntity()
+        val user = userRepository.findByEmail(attributes.email)?.apply {
+            this.name = attributes.name
+            this.picture = attributes.picture
+        } ?: attributes.toEntity()
 
         return userRepository.save(user)
     }
