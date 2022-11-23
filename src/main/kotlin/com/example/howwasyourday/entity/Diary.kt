@@ -33,9 +33,23 @@ class Diary(
     fun removeAction(action: Action) {
         _actions.remove(action)
     }
-
     fun clearAction() {
         _actions.clear()
+    }
+
+    @OneToMany(
+        cascade = [CascadeType.ALL],
+        fetch = FetchType.LAZY,
+        mappedBy = "diary"
+    )
+    private val _comments: MutableList<Comment> = mutableListOf()
+    val comments: List<Comment> get() = _comments.toList()
+
+    fun addComment(comment: Comment) {
+        _comments.add(comment)
+    }
+    fun removeComment(comment: Comment) {
+        _comments.remove(comment)
     }
 }
 

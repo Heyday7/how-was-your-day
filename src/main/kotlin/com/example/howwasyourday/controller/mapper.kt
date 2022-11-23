@@ -3,9 +3,11 @@ package com.example.howwasyourday.controller
 import com.example.howwasyourday.controller.request.RequestActionDTO
 import com.example.howwasyourday.controller.request.RequestDiaryDTO
 import com.example.howwasyourday.controller.response.ResponseActionDTO
+import com.example.howwasyourday.controller.response.ResponseCommentDTO
 import com.example.howwasyourday.controller.response.ResponseDiaryDTO
 import com.example.howwasyourday.controller.response.ResponseUserDTO
 import com.example.howwasyourday.entity.Action
+import com.example.howwasyourday.entity.Comment
 import com.example.howwasyourday.entity.Diary
 import com.example.howwasyourday.entity.User
 
@@ -15,7 +17,8 @@ fun Diary.toResponseDiaryDTO(): ResponseDiaryDTO = ResponseDiaryDTO(
         body,
         isPrivate,
         writer.toResponseUserDTO(),
-        actions.map { it.toResponseActionDTO() }
+        actions.map { it.toResponseActionDTO() },
+        comments.map { it.toResponseCommentDTO() }
 )
 
 fun Action.toResponseActionDTO(): ResponseActionDTO = ResponseActionDTO(
@@ -31,7 +34,16 @@ fun User.toResponseUserDTO(): ResponseUserDTO = ResponseUserDTO(
         picture,
         role,
         createdAt,
-        diaries.map { it.id ?: 0 }
+        diaries.map { it.id ?: 0 },
+        comments.map { it.id ?: 0 }
+)
+
+fun Comment.toResponseCommentDTO(): ResponseCommentDTO = ResponseCommentDTO(
+        id ?: 0,
+        title,
+        content,
+        diary.id ?: 0,
+        user.toResponseUserDTO()
 )
 
 fun RequestActionDTO.toAction(): Action = Action(

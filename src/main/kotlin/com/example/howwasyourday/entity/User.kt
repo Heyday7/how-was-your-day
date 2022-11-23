@@ -38,6 +38,21 @@ class User(
     fun removeDiary(diary: Diary) {
         _diaries.remove(diary)
     }
+
+    @OneToMany(
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.LAZY,
+            mappedBy = "user"
+    )
+    private val _comments: MutableList<Comment> = mutableListOf()
+    val comments: List<Comment> get() =  _comments.toList()
+
+    fun addComment(comment: Comment) {
+        _comments.add(comment)
+    }
+    fun removeComment(comment: Comment) {
+        _comments.remove(comment)
+    }
 }
 
 enum class Role(

@@ -1,0 +1,17 @@
+<div class="col-md-12">
+    <h4>댓글 작성하기</h4>
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" class="form-control" id="comment-title" placeholder="제목을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="content">내용</label>
+                <input type="text" class="form-control" id="comment-content" placeholder="내용을 입력하세요">
+            </div>
+            <input type="hidden" id="diary-id" value={{id}}>
+        </form>
+        <button type="button" class="btn btn-primary" id="btn-comment-save">댓글 작성</button>
+    </div>
+</div>

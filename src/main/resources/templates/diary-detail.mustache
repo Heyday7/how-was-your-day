@@ -11,11 +11,22 @@
         {{/actions}}
         </p>
     </div>
-    <span data-writer-id={{writer.id}} data-user-id={{userId}} data-diary-id={{id}}>
-    <div class="rol" id="edit"></div>
+    <span
+            data-writer-id={{writer.id}}
+            data-user-id={{userId}}
+            data-diary-id={{id}}
+    >
+    <div class="row" id="edit"></div>
+    {{#comments}}
+        <input name="comment-id-and-user-id[]" type="hidden" value="{{id}},{{user.id}}">
+        {{>comment-simple}}
+    {{/comments}}
+    {{>comment-post}}
 {{/diary}}
 {{^diary}}
     Diary 로드에 실패했습니다.
 {{/diary}}
 <script src="/js/app/diary-detail.js"></script>
+<script src="/js/app/comment-post.js"></script>
+<script src="/js/app/comment-simple.js"></script>
 {{>footer}}
