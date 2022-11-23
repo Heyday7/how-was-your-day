@@ -17,7 +17,6 @@ class HtmlController(
 ) {
     @GetMapping("/")
     fun home(model: Model): String {
-        model.addAttribute("hi", "hi")
         val sessionUser = httpSession.getAttribute("user") as SessionUser?
         if (sessionUser?.id != null) {
             val user = userService.getById(sessionUser.id)
@@ -35,6 +34,10 @@ class HtmlController(
     @GetMapping("/diary/{id}")
     fun diaryDetail(@PathVariable id: Long, model: Model): String {
         val diary = diaryService.get(id)
+        val sessionUser = httpSession.getAttribute("user") as SessionUser?
+        if (sessionUser?.id != null) {
+            model.addAttribute("userId", sessionUser.id)
+        }
         model.addAttribute("diary", diary)
 
         return "diary-detail"
@@ -46,5 +49,13 @@ class HtmlController(
         model.addAttribute("diaries", diaries)
 
         return "diary-list"
+    }
+
+    @GetMapping("/diary/{id}/update")
+    fun diaryUpdate(@PathVariable id: Long, model: Model): String{
+        val diary = diaryService.get(id)
+        model.addAttribute("diary", diary)
+
+        return "diary-update"
     }
 }

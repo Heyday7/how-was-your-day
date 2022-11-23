@@ -11,12 +11,11 @@
         {{/actions}}
         </p>
     </div>
+    <span data-writer-id={{writer.id}} data-user-id={{userId}} data-diary-id={{id}}>
+    <div class="rol" id="edit"></div>
 {{/diary}}
 {{^diary}}
     Diary 로드에 실패했습니다.
 {{/diary}}
-
-
-
-
+<script src="/js/app/diary-detail.js"></script>
 {{>footer}}

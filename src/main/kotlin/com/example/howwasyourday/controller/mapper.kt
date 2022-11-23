@@ -1,12 +1,16 @@
-package com.example.howwasyourday.controller.response
+package com.example.howwasyourday.controller
 
 import com.example.howwasyourday.controller.request.RequestActionDTO
 import com.example.howwasyourday.controller.request.RequestDiaryDTO
+import com.example.howwasyourday.controller.response.ResponseActionDTO
+import com.example.howwasyourday.controller.response.ResponseDiaryDTO
+import com.example.howwasyourday.controller.response.ResponseUserDTO
 import com.example.howwasyourday.entity.Action
 import com.example.howwasyourday.entity.Diary
 import com.example.howwasyourday.entity.User
 
 fun Diary.toResponseDiaryDTO(): ResponseDiaryDTO = ResponseDiaryDTO(
+        id ?: 0,
         title,
         body,
         isPrivate,
@@ -15,17 +19,19 @@ fun Diary.toResponseDiaryDTO(): ResponseDiaryDTO = ResponseDiaryDTO(
 )
 
 fun Action.toResponseActionDTO(): ResponseActionDTO = ResponseActionDTO(
+        id ?: 0,
         type,
         comment
 )
 
 fun User.toResponseUserDTO(): ResponseUserDTO = ResponseUserDTO(
+        id ?: 0,
         email,
         name,
         picture,
         role,
         createdAt,
-        diaries.map { it.toResponseDiaryDTO() }
+        diaries.map { it.id ?: 0 }
 )
 
 fun RequestActionDTO.toAction(): Action = Action(

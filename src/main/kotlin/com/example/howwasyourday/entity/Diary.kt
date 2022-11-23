@@ -33,6 +33,10 @@ class Diary(
     fun removeAction(action: Action) {
         _actions.remove(action)
     }
+
+    fun clearAction() {
+        _actions.clear()
+    }
 }
 
 
