@@ -5,13 +5,14 @@ var main = {
         var session_id = $("span").data("user-id");
         var writer_id = $("span").data("writer-id");
         var diary_id = $("span").data("diary-id");
+        var comments = $("span").data("comments");
 
         var html = `<p>
                        <button type="button" id="btn-action-update">수정</button>
                        <button type="button" id="btn-action-delete">삭제</button>
                    </p>`
 
-        if(writer_id == session_id){
+        if (writer_id == session_id) {
             $("#edit").append(html);
 
             $(document).ready(function () {
