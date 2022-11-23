@@ -6,5 +6,6 @@ data class ResponseDiaryDTO(
     val body: String,
     val isPrivate: Boolean,
     val writer: ResponseUserDTO,
-    val actions: List<ResponseActionDTO>
+    val actions: List<ResponseActionDTO>,
+    val comments: List<ResponseCommentDTO>
 )

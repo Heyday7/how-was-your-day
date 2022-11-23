@@ -11,8 +11,6 @@ var main = {
                        <button type="button" id="btn-action-delete">삭제</button>
                    </p>`
 
-        console.dir(session_id)
-        console.dir(writer_id)
         if(writer_id == session_id){
             $("#edit").append(html);
 
