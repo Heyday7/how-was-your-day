@@ -37,3 +37,6 @@ out/
 .vscode/
 
 application-oauth.properties
+
+### db for docker-compose
+db
